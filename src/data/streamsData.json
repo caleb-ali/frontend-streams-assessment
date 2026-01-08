@@ -1,0 +1,56 @@
+{
+  "frequentQuestions": [
+    "Excepteur sint occaecat cupidatat?",
+    "Excepteur sint occaecat cupidatat?"
+  ],
+  "bookmarks": [
+    "Why is sentiment dropping this...",
+    "What do people dislike about..."
+  ],
+  "history": {
+    "Today": [
+      "Why is sentiment dropping this...",
+      "Why is sentiment dropping this..."
+    ],
+    "Last 7 days": [
+      "Why is sentiment dropping this..."
+    ],
+    "November": [
+      "Why is sentiment dropping this..."
+    ]
+  },
+  "sections": {
+    "section1": {
+      "title": "Section 1",
+      "heading": "Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    "section2": {
+      "title": "Section 2",
+      "heading": "Commodo consequat",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    "section3": {
+      "title": "Section 3",
+      "heading": "Commodo consequat",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    }
+  },
+  "dataSources": [
+    {
+      "name": "Sawyer Merritt",
+      "date": "November 20 2025",
+      "preview": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
+    },
+    {
+      "name": "Jessthesocial",
+      "date": "November 20 2025",
+      "preview": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
+    },
+    {
+      "name": "Sawyer Merritt",
+      "date": "November 20 2025",
+      "preview": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
+    }
+  ]
+}
