@@ -17,6 +17,7 @@ import { StackedCards } from "@/components/ui/stacked-cards";
 export default function Streams() {
   const [query, setQuery] = useState("");
   const [showResults, setShowResults] = useState(false);
+  const [isInputHovered, setIsInputHovered] = useState(false);
 
   const frequentQuestions = [
     "Excepteur sint occaecat cupidatat?",
@@ -24,6 +25,7 @@ export default function Streams() {
   ];
 
   const handleAnalyze = () => {
+    if (!query.trim()) return; 
     setShowResults(true);
   };
 
@@ -41,6 +43,9 @@ export default function Streams() {
     setQuery(item);
     setShowResults(true);
   };
+
+  
+  const isQueryEmpty = !query.trim();
 
   return (
     <Layout>
@@ -87,7 +92,9 @@ export default function Streams() {
                 placeholder="Ask anything"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                className="h-full text-[#959AA6] placeholder:text-[#959AA6] text-[16px] border border-[#EDEEF0] rounded-2xl pl-4 pr-24 items-start pb-[40px]"
+                onMouseEnter={() => setIsInputHovered(true)}
+                onMouseLeave={() => setIsInputHovered(false)}
+                className="h-full text-[#959AA6] placeholder:text-[#959AA6] text-[16px] border border-[#EDEEF0] rounded-2xl pl-4 pr-24 items-start pb-[40px] transition-all duration-300 hover:bg-gray-100"
               />
 
               <div className="absolute left-4 bottom-4 flex items-center gap-2 text-xs">
@@ -99,7 +106,11 @@ export default function Streams() {
 
               <Button
                 onClick={handleAnalyze}
-                className="absolute right-4 bottom-4 bg-gray-400 hover:bg-gray-500"
+                className={`absolute right-4 bottom-4 transition-all duration-300 ${
+                  isInputHovered 
+                    ? 'bg-black hover:bg-gray-800 text-white' 
+                    : 'bg-gray-400 hover:bg-gray-500'
+                } ${isQueryEmpty ? 'pointer-events-none' : ''}`}
               >
                 Analyze
               </Button>
@@ -113,7 +124,7 @@ export default function Streams() {
                     key={index}
                     variant="outline"
                     onClick={() => handleFrequentQuestion(question)}
-                    className="h-14 flex items-center justify-between px-[17px] text-base leading-6 font-normal text-[#4F566B] border border-[#EDEEF0] rounded-2xl hover:bg-gray-50"
+                    className="h-14 flex items-center justify-between px-[17px] text-base leading-6 font-normal text-[#4F566B] border border-[#EDEEF0] rounded-2xl hover:bg-gray-50 transition-colors duration-300"
                   >
                     <span>{question}</span>
                     <span>→</span>
@@ -129,7 +140,7 @@ export default function Streams() {
           <>
             <Separator className="my-0 mt-8 md:mt-16" />
             <div className="flex flex-col md:flex-row">
-              {/* Sidebar - Left on desktop, bottom on mobile */}
+           
               <div className="w-full md:w-1/5 p-4 md:p-0 md:mt-2 md:ml-2 md:mr-2 md:relative ">
                 {/* Bookmarks */}
                 <div>
@@ -210,7 +221,6 @@ export default function Streams() {
                     </div>
 
                     {/* Section 2 - Top Right */}
-
                     <div className="border-b p-6 space-y-3 relative min-h-[300px] md:min-h-[222.75px]">
                       <StackedCards />
                     </div>
@@ -234,13 +244,13 @@ export default function Streams() {
                         <h2 className="text-[16px] font-[500] text-[#959AA6]">
                           Data Source
                         </h2>
-                        <select className="text-xs border border-gray-300 rounded px-2 py-1">
+                        <select className="text-xs border border-gray-300 rounded px-2 py-1 hover:border-gray-400 transition-colors duration-300">
                           <option>All</option>
                         </select>
                       </div>
                       <div className="space-y-3">
                         {streamsData.dataSources.map((source, index) => (
-                          <div key={index} className="space-y-1.5">
+                          <div key={index} className="space-y-1.5 hover:bg-gray-50 p-2 rounded transition-colors duration-300">
                             <div className="flex justify-between items-center">
                               <div>
                                 <span className="text-sm font-medium text-gray-900">
@@ -254,7 +264,7 @@ export default function Streams() {
                                 <img
                                   src="/icons/pdf.svg"
                                   alt=""
-                                  className="w-4 h-4 rotate-[180deg]"
+                                  className="w-4 h-4 rotate-[180deg] hover:scale-110 transition-transform duration-300"
                                 />
                               </div>
                             </div>
