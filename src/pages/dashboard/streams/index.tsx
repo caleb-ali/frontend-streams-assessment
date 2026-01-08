@@ -32,6 +32,16 @@ export default function Streams() {
     setShowResults(true);
   };
 
+  const handleBookmarkClick = (bookmark: string) => {
+    setQuery(bookmark);
+    setShowResults(true);
+  };
+
+  const handleHistoryItemClick = (item: string) => {
+    setQuery(item);
+    setShowResults(true);
+  };
+
   return (
     <Layout>
       <div className="flex flex-col h-full">
@@ -52,65 +62,66 @@ export default function Streams() {
           </div>
         </div>
         <Separator className="my-0" />
-
-        <div className="space-y-2 max-w-[972px] mx-auto w-full mt-8 md:mt-20 px-4">
-          <h1
-            className="text-[32px] md:text-[57px] font-semibold leading-[40px] md:leading-[64px] tracking-[-0.25px]"
-            style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
-          >
-            <span className="bg-gradient-to-r from-[#6059FA] to-[#282465] bg-clip-text text-transparent">
-              Ask Stream
-            </span>
-          </h1>
-          <h1
-            className="text-[32px] md:text-[57px] font-semibold leading-[40px] md:leading-[64px] tracking-[-0.25px]"
-            style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
-          >
-            <span className="text-gray-400">lorem ipsum</span>
-          </h1>
-        </div>
-
-        {/* Input Section */}
-        <div className="space-y-4 max-w-[972px] mx-auto w-full mt-8 px-4">
-          <div className="relative h-[104px]">
-            <Input
-              placeholder="Ask anything"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              className="h-full text-[#959AA6] placeholder:text-[#959AA6] text-[16px] border border-[#EDEEF0] rounded-2xl pl-4 pr-24 items-start pb-[40px]"
-            />
-
-            <div className="absolute left-4 bottom-4 flex items-center gap-2 text-xs">
-              <BetaBadge text="Beta" />
-              <span className="text-[#959AA6] text-[14px]">
-                Conversational Analytics
-              </span>
-            </div>
-
-            <Button
-              onClick={handleAnalyze}
-              className="absolute right-4 bottom-4 bg-gray-400 hover:bg-gray-500"
+        <div className="px-0 md:px-8 lg:px-16 xl:px-52">
+          <div className="space-y-2 max-w-[972px] mx-auto w-full mt-8 md:mt-20 px-4">
+            <h1
+              className="text-[32px] md:text-[57px] font-semibold leading-[40px] md:leading-[64px] tracking-[-0.25px]"
+              style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
             >
-              Analyze
-            </Button>
+              <span className="bg-gradient-to-r from-[#6059FA] to-[#282465] bg-clip-text text-transparent">
+                Ask Stream
+              </span>
+            </h1>
+            <h1
+              className="text-[32px] md:text-[57px] font-semibold leading-[40px] md:leading-[64px] tracking-[-0.25px]"
+              style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+            >
+              <span className="text-gray-400">lorem ipsum</span>
+            </h1>
           </div>
 
-          {/* Frequent Questions */}
-          {!showResults && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
-              {frequentQuestions.map((question, index) => (
-                <Button
-                  key={index}
-                  variant="outline"
-                  onClick={() => handleFrequentQuestion(question)}
-                  className="h-14 flex items-center justify-between px-[17px] text-base leading-6 font-normal text-[#4F566B] border border-[#EDEEF0] rounded-2xl hover:bg-gray-50"
-                >
-                  <span>{question}</span>
-                  <span>→</span>
-                </Button>
-              ))}
+          {/* Input Section */}
+          <div className="space-y-4 max-w-[972px] mx-auto w-full mt-8 px-4">
+            <div className="relative h-[104px]">
+              <Input
+                placeholder="Ask anything"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                className="h-full text-[#959AA6] placeholder:text-[#959AA6] text-[16px] border border-[#EDEEF0] rounded-2xl pl-4 pr-24 items-start pb-[40px]"
+              />
+
+              <div className="absolute left-4 bottom-4 flex items-center gap-2 text-xs">
+                <BetaBadge text="Beta" />
+                <span className="text-[#959AA6] text-[14px]">
+                  Conversational Analytics
+                </span>
+              </div>
+
+              <Button
+                onClick={handleAnalyze}
+                className="absolute right-4 bottom-4 bg-gray-400 hover:bg-gray-500"
+              >
+                Analyze
+              </Button>
             </div>
-          )}
+
+            {/* Frequent Questions */}
+            {!showResults && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+                {frequentQuestions.map((question, index) => (
+                  <Button
+                    key={index}
+                    variant="outline"
+                    onClick={() => handleFrequentQuestion(question)}
+                    className="h-14 flex items-center justify-between px-[17px] text-base leading-6 font-normal text-[#4F566B] border border-[#EDEEF0] rounded-2xl hover:bg-gray-50"
+                  >
+                    <span>{question}</span>
+                    <span>→</span>
+                  </Button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Results Section */}
@@ -119,7 +130,7 @@ export default function Streams() {
             <Separator className="my-0 mt-8 md:mt-16" />
             <div className="flex flex-col md:flex-row">
               {/* Sidebar - Left on desktop, bottom on mobile */}
-              <div className="w-full md:w-1/5 p-4 md:mt-2 md:ml-2 md:mr-2 md:relative order-2 md:order-1">
+              <div className="w-full md:w-1/5 p-4 md:p-0 md:mt-2 md:ml-2 md:mr-2 md:relative ">
                 {/* Bookmarks */}
                 <div>
                   <h3 className="text-[16px] font-[500] text-[#959AA6] mb-3">
@@ -129,6 +140,7 @@ export default function Streams() {
                     {streamsData.bookmarks.map((bookmark, index) => (
                       <div
                         key={index}
+                        onClick={() => handleBookmarkClick(bookmark)}
                         className="text-[16px] text-gray-600 truncate cursor-pointer hover:text-[#4F566B] hover:bg-[#EFEFFF] px-2 py-1.5 rounded transition-colors duration-150"
                       >
                         {bookmark}
@@ -154,6 +166,7 @@ export default function Streams() {
                             {items.map((item, index) => (
                               <div
                                 key={index}
+                                onClick={() => handleHistoryItemClick(item)}
                                 className="text-[16px] text-gray-600 truncate cursor-pointer hover:text-[#4F566B] hover:bg-[#EFEFFF] px-2 py-1.5 rounded transition-colors duration-150"
                               >
                                 {item}
@@ -166,7 +179,6 @@ export default function Streams() {
                   </div>
                 </div>
 
-                {/* Beta badge */}
                 <div className="mt-8 md:absolute md:left-0 md:bottom-4 flex items-center gap-2 text-xs">
                   <BetaBadge text="Beta" />
                   <span className="text-[#959AA6] text-[14px]">
@@ -178,7 +190,7 @@ export default function Streams() {
               <Separator className="hidden md:block" orientation="vertical" />
 
               {/* Sections Grid - Right on desktop, top on mobile */}
-              <div className="w-full md:w-4/5 p-4 md:m-8 order-1 md:order-2">
+              <div className="w-full md:w-4/5 p-4 lg:p-0 md:m-8 order-1 md:order-2">
                 <div className="flex-1">
                   <div className="grid grid-cols-1 md:grid-cols-2 border border-gray-200 rounded-lg overflow-hidden">
                     {/* Section 1 - Top Left */}
@@ -198,10 +210,10 @@ export default function Streams() {
                     </div>
 
                     {/* Section 2 - Top Right */}
-         
-<div className="border-b p-6 space-y-3 relative min-h-[300px] md:min-h-[222.75px]">
-  <StackedCards />
-</div>
+
+                    <div className="border-b p-6 space-y-3 relative min-h-[300px] md:min-h-[222.75px]">
+                      <StackedCards />
+                    </div>
 
                     {/* Section 3 - Bottom Left */}
                     <div className="border-b md:border-r md:border-b-0 border-gray-200 p-6 space-y-3">
